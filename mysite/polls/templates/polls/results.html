@@ -1,0 +1,19 @@
+<!-- {% if results %}
+    <ul>
+            
+          <li>  <a href="polls/{{results.id}}">{{results.question_text}}</a></li>
+               
+    </ul>
+{% else %}
+<p>No Questions found !!</p>
+{% endif %} -->
+
+<h1>{{ question.question_text }}</h1>
+
+<ul>
+{% for choice in question.choice_set.all %}
+    <li>{{ choice.choice_text }} -- {{ choice.vote }} vote</li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'polls:detail' question.id %}">Vote again?</a>
